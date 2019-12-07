@@ -59,14 +59,14 @@ ifeq ($(PLATFORM), MSP)
 	CPPFLAGS = -DMSP432 $(INCLUDES)
 	CFLAGS = $(COMCFLAGS) $(ARCHFLAGS) -mcpu=$(CPU) -march=$(ARCH) --specs=$(SPECS)
 	LDFLAGS = -Wl,-Map=$(TARGET).map $(LINKER_PATH) $(LINKER_FILE)
-	SIZE = arm-none-eabi-size
+	SIZE = arm-none-eabi-size -Ad
 
 else
 	CC = gcc
 	CFLAGS = $(COMCFLAGS)
 	CPPFLAGS = -DHOST $(INCLUDES)
 	LDFLAGS = -Wl,-Map=$(TARGET).map
-	SIZE = size
+	SIZE = size -Ad
 
 endif
 
